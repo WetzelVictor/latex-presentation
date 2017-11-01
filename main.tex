@@ -3,16 +3,13 @@
 %----------------------------------------------------------------------------------------
 \input{config.tex}
 
-\title[]{Modèles intermédiaires phonologiques pour la synthèse vocale
-performative} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[]{APP Cordes 2: Dimensionnement de la Kora} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{Victor Wetzel} % Your name
-\institute[UPMC] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+\author{Groupe D} % Your name
+\institute[ATIAM] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
-Master SpI, Acoustique \\ % Your institution for the title page
+Master ATIAM, Acoustique } % Your institution for the title page
 \medskip
-\textit{victor.wetzel@etu.upmc.fr} % Your email address
-}
 \date{\today} % Date, can be changed to a custom date
 
 \begin{document}
@@ -22,11 +19,52 @@ Master SpI, Acoustique \\ % Your institution for the title page
 \end{frame}
 
 \begin{frame}
-\frametitle{Overview} % Table of contents slide, comment this block out to remove it
-\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+  \frametitle{Hypothèses}
+  Chevalet rigide, structure non-rayonnante
+  \begin{itemize}
+    \item{Membrane:} Tension, Matériau
+    \item{Chevalet:} Position 
+    \item{Cordes:} Matériau
+    \item{Caisse:} Diamètre du trou latéral
+  \end{itemize}
+
+  Homogénéité dans la tessiture, Amplitude du son rayonné, tenue du son
+\end{frame}
+
+\begin{frame}
+  \frametitle{Cordes}
+  \begin{itemize}
+    \item Fréquences et Tension +/- fixées
+    \item Le matériau joue sur l'inharmonicité et le comportement fréquentielle
+      du facteur de qualité
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ouverture de la caisse}
+  \begin{itemize}
+    \item Homogénéité de la tessiture: note du loup
+    \item Fréquence de Helmholtz, membrane immobile: $ f =\frac{c}{2\pi} \sqrt{\frac{A}{V h}}$
+    \item Rayon du trou latéral: $r = \frac{\pi f \sqrt{2 \pi h d}}{3c}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Position du chevalet}
+  \begin{itemize}
+    \item Exciter le plus de modes possibles
+    \item Près du bord
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Couplage cordes/membrane}
+  \begin{itemize}
+    \item + tension/ + raideur : augmentation des $f_n$
+    \item + masse: diminution des $f_n$
+    \item Compromis de la qualité du couplage
+  \end{itemize}
 \end{frame}
 
 
-
-\input{content.tex}
 \end{document}
