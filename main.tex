@@ -3,9 +3,9 @@
 %----------------------------------------------------------------------------------------
 \input{config.tex}
 
-\title[]{APP Cordes 2: Dimensionnement de la Kora} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[]{APP Vents 1: Percer les mystères des perces de cuivres} % The short title appears at the bottom of every slide, the full title is only on the title page
 
-\author{Groupe D} % Your name
+\author{Groupe B} % Your name
 \institute[ATIAM] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
 {
 Master ATIAM, Acoustique } % Your institution for the title page
@@ -20,51 +20,136 @@ Master ATIAM, Acoustique } % Your institution for the title page
 
 \begin{frame}
   \frametitle{Hypothèses}
-  Chevalet rigide, structure non-rayonnante
-  \begin{itemize}
-    \item{Membrane:} Tension, Matériau
-    \item{Chevalet:} Position 
-    \item{Cordes:} Matériau
-    \item{Caisse:} Diamètre du trou latéral
-  \end{itemize}
-
-  Homogénéité dans la tessiture, Amplitude du son rayonné, tenue du son
+  \begin{enumerate}
+    \item \textbf{Régime linéaire:} petites perturbations
+    \item \textbf{Hypothèse basse fréquences:} $ka <<1$
+    \item \textbf{Géométrie simple:} segments coniques ou cylindriques
+    \item \textbf{Tuyau large:} $a >> r_v$
+  \end{enumerate}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Cordes}
-  \begin{itemize}
-    \item Fréquences et Tension +/- fixées
-    \item Le matériau joue sur l'inharmonicité et le comportement fréquentielle
-      du facteur de qualité
-  \end{itemize}
-\end{frame}
+% =========================
 
 \begin{frame}
-  \frametitle{Ouverture de la caisse}
+  \frametitle{Modèle conservatif VS dissipatif (1/2)}
+\begin{block}{Impédance d'entrée d'un cylindre}
+  Longueur $L$ fermé-ouvert
+  \begin{equation*}
+    Z_e = \mbox{j} \frac{\rho_0 c}{S} \tan{kL} =  \mbox{j} Z_c \tan{kL}
+ \end{equation*}
+ \end{block}
+
+
+ \pause
+ \begin{exampleblock}{Introduction des pertes}
+ On considère les deux modèles suivants:
   \begin{itemize}
-    \item Homogénéité de la tessiture: note du loup
-    \item Fréquence de Helmholtz, membrane immobile: $ f =\frac{c}{2\pi} \sqrt{\frac{A}{V h}}$
-    \item Rayon du trou latéral: $r = \frac{\pi f \sqrt{2 \pi h d}}{3c}$
+    \item \textbf{Conservatif:} $k = \frac{w}{c}$
+    \item \textbf{Dissipatif:} $k_c = k + \alpha (1 - \mbox{j})$, \hspace{20pt}
+    $\alpha = 3.10^{-5} \sqrt{\frac{f}{R}}$
+  \end{itemize}
+ \end{exampleblock}
+
+  \pause
+  \begin{block}{Modèle dissipatif}
+    \begin{itemize}
+      \item L'impédance dissipative comprend une \textbf{partie réelle résistive} 
+        et une \textbf{partie imaginaire réactive} (correction de longueur).
+      \pause
+      \item Fréquences $f_n$ plus basses et amortissement des pics d'impédance
     \end{itemize}
+  \end{block}
 \end{frame}
+
+% =========================
 
 \begin{frame}
-  \frametitle{Position du chevalet}
-  \begin{itemize}
-    \item Exciter le plus de modes possibles
-    \item Près du bord
-  \end{itemize}
+  \frametitle{Modèle conservatif VS dissipatif (2/2)}
+    \begin{figure}
+      \centering
+      \captionsetup{justification=centering, margin=1cm}
+      \includegraphics[width=0.85\textwidth]{img/imp_entree3.eps}
+      \caption{Impédance d'entrée d'un cylindre;
+              {\color{blue} En bleu}, modèle conservatif; 
+               \alert{En rouge}, modèle dissipatif;
+               {\textbf{En noir}, cas baflé},
+               {\color{green}En vert}, cas non-baflé
+              }
+    \end{figure}
+    \begin{center}
+      \alert{Les maxima locaux de l'impédance sont les fréquences de résonance}
+    \end{center}
 \end{frame}
+
+% =========================
+\begin{frame}
+  \frametitle{Prise en compte du rayonnement}
+  \begin{exampleblock}{Modèle dissipatif}
+    \begin{itemize}
+    \item Correction de longueur de l'ordre de $0.6 R$
+    \item écart en cent: $1200 \log_2 (\frac{f_2}{f_1}) = 68 $ (cas baflé)
+    \item Dans le cas non-baflé: $c = 98 cents$
+    \end{itemize}
+
+    \end{exampleblock}
+\pause
+    \begin{block}{Rayonnement}
+  \begin{itemize}
+    \item L'impédance à l'extrémité ouverte n'est plus nulle.
+    \item Pertes très petites
+    \item On pose $Z(x = L) = Z_r$
+  \end{itemize}
+\end{block}
+\end{frame}
+
+% =========================
 
 \begin{frame}
-  \frametitle{Couplage cordes/membrane}
+  \frametitle{Outil numérique d'estimation d'impédance d'entrée}
+  
+  \pause
+  \begin{block}{Matrice de Transfert}
+    Permet de donner d'obtenir l'impédance à une abscisse $x_1$ du système à
+    partir de l'impédance à l'abscisse $x_2$:
+    \begin{equation*}
+      \begin{pmatrix}
+        p_1\\
+        u_1\\
+      \end{pmatrix}
+      =
+      \begin{pmatrix}
+        A &B\\
+        C &D\\
+      \end{pmatrix}
+      \begin{pmatrix}
+        p_2\\
+        u_2\\
+      \end{pmatrix}
+    \end{equation*}
+  \end{block}
+
+  \vspace{20pt}
+  \pause
+  \begin{exampleblock}{Algorithme}
   \begin{itemize}
-    \item + tension/ + raideur : augmentation des $f_n$
-    \item + masse: diminution des $f_n$
-    \item Compromis de la qualité du couplage
+    \item Les coefficients de la matrice sont calculés dans le cas d'un segment
+  conique, qui se simplifie dans le cas cylindrique (e.g. $R(x_1) = R(x_2)$).
+  \pause
+    \item En partant de la fin, on calcule la matrice de transfert de chaque
+      segment jusqu'à obtenir la matrice de transfert du système complet
   \end{itemize}
+\end{exampleblock}
 \end{frame}
 
+% ========================
+\begin{frame}
+  \frametitle{Cas d'étude}
+    \begin{figure}
+      \centering
+      \captionsetup{justification=centering, margin=1cm}
+      \includegraphics[width=0.7\textwidth]{img/prof_tromp.eps}
+      \caption{Perce d'une trompette Bressing}
+    \end{figure}
+\end{frame}
 
 \end{document}
